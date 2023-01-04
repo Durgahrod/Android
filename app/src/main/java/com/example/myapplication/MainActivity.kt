@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+/*
         Log.d("REGX", "Alphanum : LETTERS : " + regExLetter("LETTERS").toString())
         Log.d("REGX", "Alphanum : LETT%RS : " + regExLetter("LETT%RS").toString())
 
@@ -32,6 +33,47 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("REGX", "Mail : olivier@inkos.fr.com.y.aaa : " + regExMail("olivier@inkos.fr").toString())
         Log.d("REGX", "Mail : olivier@@inkOS,FR : " + regExMail("olivier@@inkOS,FR").toString())
+*/
+
+        val persons = listOf(
+            Person("John", 18),
+            Person("Antony", 40),
+            Person("Camille", 27))
+
+        val personsSortedName = persons.sortedBy{ it.firstName }
+        val personsSortedAge = persons.sortedBy{ it.age }
+
+        for(person in personsSortedName){
+            Log.d("PERSON", "Persons name : $person")
+        }
+
+        for(person in personsSortedAge){
+            Log.d("PERSON", "Persons age : $person")
+        }
+
+        val items = listOf("Kotlin", "Java", "Javascript")
+
+        //tri par ordre alphabétique
+        val itemsAlpha = items.sortedBy {
+            it
+        }
+
+        //tri par taille
+        val itemsSize = items.sortedBy {
+            it.length
+        }
+
+        for(item in items) {
+            Log.d("SORT", "Normal  : $item")
+        }
+
+        for(item in itemsAlpha) {
+            Log.d("SORT", "Alphanum  : $item")
+        }
+
+        for(item in itemsSize) {
+            Log.d("SORT", "Size  : $item")
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -74,6 +116,21 @@ class MainActivity : AppCompatActivity() {
         val pattern = Regex("^[\\w\\-\\.]+@(|\\w-]+\\.)+.([\\w\\-\\.])+")
         return pattern.matches(s)
     }
+
+    /*fun sortByAge(List: List<Person>): List<Person>{
+        val temp: MutableList<Person> = mutableListOf()
+
+        for(j in 0 <= until < list.count()){
+            var minPerson = Person("", 0)
+            for(i in ) <= until < list.count()){
+                if(minPerson.age < list[i].age && !temp.contains((list[i])){
+                    minPerson = list[i]
+                    }
+            }
+            temp.add(0, minPerson)
+        }
+        return temp
+    }*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
